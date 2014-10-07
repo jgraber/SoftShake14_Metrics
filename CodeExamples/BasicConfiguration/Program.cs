@@ -16,7 +16,7 @@ namespace BasicConfiguration
                     .WriteTo.Console()
                     .CreateLogger();
 
-            
+            LogExamples.WriteLogMessages();
         }
     }
 }

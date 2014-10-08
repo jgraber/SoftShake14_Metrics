@@ -1,0 +1,3 @@
+﻿{"Timestamp":"2014-10-08T21:35:05.0144568+02:00","Level":"Information","MessageTemplate":"A simple info message"}
+{"Timestamp":"2014-10-08T21:35:05.0314704+02:00","Level":"Error","MessageTemplate":"Now we have an error!"}
+{"Timestamp":"2014-10-08T21:35:05.0384772+02:00","Level":"Fatal","MessageTemplate":"The division {dividend}/{divisor} failed","Exception":"System.DivideByZeroException: Es wurde versucht, durch 0 (null) zu teilen.\r\n   bei JSONOutputConfiguration.LogExamples.WriteLogMessages() in c:\\_Projects\\SoftShake14_Metrics\\CodeExamples\\JSONOutputConfiguration\\LogExamples.cs:Zeile 26.","Properties":{"dividend":10,"divisor":0}}

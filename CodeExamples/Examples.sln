@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSONOutputConfiguration", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeqConfiguration", "SeqConfiguration\SeqConfiguration.csproj", "{343D84EB-A4BE-466D-8146-72C488C4601D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElasticsearchConfiguration", "ElasticsearchConfiguration\ElasticsearchConfiguration.csproj", "{47204623-80A1-4B0F-B784-BC58FC32D8A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{343D84EB-A4BE-466D-8146-72C488C4601D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{343D84EB-A4BE-466D-8146-72C488C4601D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{343D84EB-A4BE-466D-8146-72C488C4601D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47204623-80A1-4B0F-B784-BC58FC32D8A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47204623-80A1-4B0F-B784-BC58FC32D8A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47204623-80A1-4B0F-B784-BC58FC32D8A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47204623-80A1-4B0F-B784-BC58FC32D8A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

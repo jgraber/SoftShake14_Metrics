@@ -15,6 +15,9 @@ namespace WritingBetterMessages
             Log.Logger = new LoggerConfiguration()
                     .WriteTo.Seq("http://localhost:5341")
                     .CreateLogger();
+
+
+            BetterMessages.WriteLogMessages();
         }
     }
 }

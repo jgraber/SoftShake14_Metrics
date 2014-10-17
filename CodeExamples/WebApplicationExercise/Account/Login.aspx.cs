@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using Serilog;
 using System;
 using System.Linq;
 using System.Web;
@@ -33,6 +34,7 @@ namespace WebApplicationExercise.Account
                 if (user != null)
                 {
                     IdentityHelper.SignIn(manager, user, RememberMe.Checked);
+                    LogSuccessfulLogin(user);
                     IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
                 }
                 else
@@ -41,6 +43,12 @@ namespace WebApplicationExercise.Account
                     ErrorMessage.Visible = true;
                 }
             }
+        }
+
+        private void LogSuccessfulLogin(ApplicationUser user)
+        {
+            // Minimalistic log message => only the operating system is logged
+            Log.Information("Successful login using {os}", Context.Request.Browser.Platform);
         }
     }
 }

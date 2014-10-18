@@ -48,7 +48,10 @@ namespace WebApplicationExercise.Account
         private void LogSuccessfulLogin(ApplicationUser user)
         {
             // Minimalistic log message => only the operating system is logged
-            Log.Information("Successful login using {os}", Context.Request.Browser.Platform);
+            //Log.Information("Successful login using {os}", Context.Request.Browser.Platform);
+
+            // Log more information at login => UserName and operating system 
+            Log.Information("Successful login by {user} using {os}", user.UserName, Context.Request.Browser.Platform);
         }
     }
 }

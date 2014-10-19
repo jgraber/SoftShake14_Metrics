@@ -51,7 +51,10 @@ namespace WebApplicationExercise.Account
             //Log.Information("Successful login using {os}", Context.Request.Browser.Platform);
 
             // Log more information at login => UserName and operating system 
-            Log.Information("Successful login by {user} using {os}", user.UserName, Context.Request.Browser.Platform);
+            //Log.Information("Successful login by {user} using {os}", user.UserName, Context.Request.Browser.Platform);
+
+            // Log more information at login => UserName and operating system 
+            Log.Information("Successful login by {user} using {os} in session {session}", user.UserName, Context.Request.Browser.Platform, Context.Session.SessionID);
         }
     }
 }

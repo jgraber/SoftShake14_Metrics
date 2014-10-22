@@ -12,6 +12,9 @@ namespace RavenDBConfiguration
     {
         static void Main(string[] args)
         {
+            // Let Serilog write it's own log messages to the console
+            Serilog.Debugging.SelfLog.Out = Console.Out;
+
             // Create document store
             var documentStore = new DocumentStore
             {

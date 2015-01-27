@@ -15,7 +15,8 @@ namespace WebMVCApplicationExcercise
         {
             // Create Logger
             Log.Logger = new LoggerConfiguration()
-                    .WriteTo.Seq("http://localhost:5341")
+                    .ReadAppSettings()
+                    //.WriteTo.Seq("http://localhost:5341")
                     .CreateLogger();
 
             Log.Information("Start of WebApplicationExercise at {startup}", DateTime.Now);

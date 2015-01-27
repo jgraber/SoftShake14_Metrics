@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using WebMVCApplicationExcercise.Models;
+using Serilog;
 
 namespace WebMVCApplicationExcercise.Controllers
 {
@@ -49,6 +50,7 @@ namespace WebMVCApplicationExcercise.Controllers
                 if (user != null)
                 {
                     await SignInAsync(user, model.RememberMe);
+                    LogSuccessfulLogin(user);
                     return RedirectToLocal(returnUrl);
                 }
                 else
@@ -59,6 +61,18 @@ namespace WebMVCApplicationExcercise.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        private void LogSuccessfulLogin(ApplicationUser user)
+        {
+            // Minimalistic log message => only the operating system is logged
+            //Log.Information("Successful login using {os}", Request.Browser.Platform);
+
+            // Log more information at login => UserName and operating system 
+            //Log.Information("Successful login by {user} using {os}", user.UserName, Request.Browser.Platform);
+
+            // Log even more information at login => UserName, operating system and session
+            Log.Information("Successful login by {user} using {os} in session {session}", user.UserName, Request.Browser.Platform, Session.SessionID);
         }
 
         //

@@ -1,0 +1,283 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Serilog.Sinks.ElasticSearch</name>
+    </assembly>
+    <members>
+        <member name="T:Serilog.LoggerConfigurationElasticSearchExtensions">
+            <summary>
+            Adds the WriteTo.ElasticSearch() extension method to <see cref="T:Serilog.LoggerConfiguration"/>.
+            </summary>
+        </member>
+        <member name="M:Serilog.LoggerConfigurationElasticSearchExtensions.ElasticSearch(Serilog.Configuration.LoggerSinkConfiguration,System.String,System.Uri,System.Int32,Serilog.Events.LogEventLevel,System.Int32,System.Nullable{System.TimeSpan},System.IFormatProvider,Elasticsearch.Net.Serialization.IElasticsearchSerializer)">
+            <summary>
+            Adds a sink that writes log events as documents to an ElasticSearch index.
+            This works great with the Kibana web interface when using the default settings.
+            Make sure to add a template to ElasticSearch like the one found here:
+            https://gist.github.com/mivano/9688328
+            </summary>
+            <param name="loggerConfiguration">The logger configuration.</param>
+            <param name="indexFormat">The index format where the events are send to. It defaults to the logstash index per day format. It uses a String.Format using the DateTime.UtcNow parameter.</param>
+            <param name="node">The URI to the node where ElasticSearch is running. When null, will fall back to http://localhost:9200</param>
+            <param name="connectionTimeOutInMilliseconds">The connection time out in milliseconds. Default value is 5000.</param>
+            <param name="restrictedToMinimumLevel">The minimum log event level required in order to write an event to the sink.</param>
+            <param name="batchPostingLimit">The maximum number of events to post in a single batch.</param>
+            <param name="period">The time to wait between checking for event batches.</param>
+            <param name="formatProvider">Supplies culture-specific formatting information, or null.</param>
+            <param name="serializer">When passing a serializer unknown object will be serialized to object instead of relying on their ToString representation</param>
+            <returns>
+            Logger configuration, allowing configuration to continue.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">loggerConfiguration</exception>
+            <exception cref="T:System.ArgumentNullException">A required parameter is null.</exception>
+        </member>
+        <member name="M:Serilog.LoggerConfigurationElasticSearchExtensions.ElasticSearch(Serilog.Configuration.LoggerSinkConfiguration,System.Collections.Generic.IEnumerable{System.Uri},System.String,System.Int32,Serilog.Events.LogEventLevel,System.Int32,System.Nullable{System.TimeSpan},System.IFormatProvider,Elasticsearch.Net.Serialization.IElasticsearchSerializer)">
+            <summary>
+            Adds a sink that writes log events as documents to an ElasticSearch index.
+            This works great with the Kibana web interface when using the default settings.
+            Make sure to add a template to ElasticSearch like the one found here:
+            https://gist.github.com/mivano/9688328
+            </summary>
+            <param name="loggerConfiguration">The logger configuration.</param>
+            <param name="nodes">The node URIs of the Elasticsearch cluster.</param>
+            <param name="indexFormat">The index format where the events are send to. It defaults to the logstash index per day format. It uses a String.Format using the DateTime.UtcNow parameter.</param>
+            <param name="connectionTimeOutInMilliseconds">The connection time out in milliseconds. Default value is 5000.</param>
+            <param name="restrictedToMinimumLevel">The minimum log event level required in order to write an event to the sink.</param>
+            <param name="batchPostingLimit">The maximum number of events to post in a single batch.</param>
+            <param name="period">The time to wait between checking for event batches.</param>
+            <param name="formatProvider">Supplies culture-specific formatting information, or null.</param>
+            <param name="serializer">When passing a serializer unknown object will be serialized to object instead of relying on their ToString representation</param>
+            <returns>
+            Logger configuration, allowing configuration to continue.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">loggerConfiguration</exception>
+            <exception cref="T:System.ArgumentNullException">A required parameter is null.</exception>
+        </member>
+        <member name="M:Serilog.LoggerConfigurationElasticSearchExtensions.ElasticSearch(Serilog.Configuration.LoggerSinkConfiguration,Elasticsearch.Net.Connection.ConnectionConfiguration,System.String,Serilog.Events.LogEventLevel,System.Int32,System.Nullable{System.TimeSpan},System.IFormatProvider,Elasticsearch.Net.Serialization.IElasticsearchSerializer)">
+            <summary>
+            Adds a sink that writes log events as documents to an ElasticSearch index.
+            This works great with the Kibana web interface when using the default settings.
+            Make sure to add a template to ElasticSearch like the one found here:
+            https://gist.github.com/mivano/9688328
+            </summary>
+            <param name="loggerConfiguration">The logger configuration.</param>
+            <param name="connectionConfiguration">The configuration to use for connecting to the Elasticsearch cluster.</param>
+            <param name="indexFormat">The index format where the events are send to. It defaults to the logstash index per day format. It uses a String.Format using the DateTime.UtcNow parameter.</param>
+            <param name="restrictedToMinimumLevel">The minimum log event level required in order to write an event to the sink.</param>
+            <param name="batchPostingLimit">The maximum number of events to post in a single batch.</param>
+            <param name="period">The time to wait between checking for event batches.</param>
+            <param name="formatProvider">Supplies culture-specific formatting information, or null.</param>
+            <param name="serializer">When passing a serializer unknown object will be serialized to object instead of relying on their ToString representation</param>
+            <returns>
+            Logger configuration, allowing configuration to continue.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">loggerConfiguration</exception>
+            <exception cref="T:System.ArgumentNullException">A required parameter is null.</exception>
+        </member>
+        <member name="M:Serilog.LoggerConfigurationElasticSearchExtensions.Elasticsearch(Serilog.Configuration.LoggerSinkConfiguration,Serilog.Sinks.ElasticSearch.ElasticsearchSinkOptions)">
+            <summary>
+            Adds a sink that writes log events as documents to an ElasticSearch index.
+            This works great with the Kibana web interface when using the default settings.
+            Make sure to add a template to ElasticSearch like the one found here:
+            https://gist.github.com/mivano/9688328
+            </summary>
+            <param name="loggerSinkConfiguration"></param>
+            <param name="options">Provides options specific to the Elasticsearch sink</param>
+            <returns></returns>
+        </member>
+        <member name="T:Serilog.Sinks.ElasticSearch.ElasticsearchJsonFormatter">
+            <summary>
+            Custom Json formatter that respects the configured property name handling and forces 'Timestamp' to @timestamp
+            </summary>
+        </member>
+        <member name="M:Serilog.Sinks.ElasticSearch.ElasticsearchJsonFormatter.#ctor(System.Boolean,System.String,System.Boolean,System.IFormatProvider,Elasticsearch.Net.Serialization.IElasticsearchSerializer,System.Boolean)">
+            <summary>
+            Construct a <see cref="T:Serilog.Sinks.ElasticSearch.ElasticsearchJsonFormatter"/>.
+            </summary>
+            <param name="omitEnclosingObject">If true, the properties of the event will be written to
+            the output without enclosing braces. Otherwise, if false, each event will be written as a well-formed
+            JSON object.</param>
+            <param name="closingDelimiter">A string that will be written after each log event is formatted.
+            If null, <see cref="P:System.Environment.NewLine"/> will be used. Ignored if <paramref name="omitEnclosingObject"/>
+            is true.</param>
+            <param name="renderMessage">If true, the message will be rendered and written to the output as a
+            property named RenderedMessage.</param>
+            <param name="formatProvider">Supplies culture-specific formatting information, or null.</param>
+            <param name="serializer">Inject a serializer to force objects to be serialized over being ToString()</param>
+            <param name="inlineFields">When set to true values will be written at the root of the json document</param>
+        </member>
+        <member name="M:Serilog.Sinks.ElasticSearch.ElasticsearchJsonFormatter.WriteRenderings(System.Linq.IGrouping{System.String,Serilog.Parsing.PropertyToken}[],System.Collections.Generic.IReadOnlyDictionary{System.String,Serilog.Events.LogEventPropertyValue},System.IO.TextWriter)">
+            <summary>
+            Writes out individual renderings of attached properties
+            </summary>
+        </member>
+        <member name="M:Serilog.Sinks.ElasticSearch.ElasticsearchJsonFormatter.WriteProperties(System.Collections.Generic.IReadOnlyDictionary{System.String,Serilog.Events.LogEventPropertyValue},System.IO.TextWriter)">
+            <summary>
+            Writes out the attached properties
+            </summary>
+        </member>
+        <member name="M:Serilog.Sinks.ElasticSearch.ElasticsearchJsonFormatter.WriteException(System.Exception,System.String@,System.IO.TextWriter)">
+            <summary>
+            Writes out the attached exception
+            </summary>
+        </member>
+        <member name="M:Serilog.Sinks.ElasticSearch.ElasticsearchJsonFormatter.WriteRenderedMessage(System.String,System.String@,System.IO.TextWriter)">
+            <summary>
+            (Optionally) writes out the rendered message
+            </summary>
+        </member>
+        <member name="M:Serilog.Sinks.ElasticSearch.ElasticsearchJsonFormatter.WriteMessageTemplate(System.String,System.String@,System.IO.TextWriter)">
+            <summary>
+            Writes out the message template for the logevent.
+            </summary>
+        </member>
+        <member name="M:Serilog.Sinks.ElasticSearch.ElasticsearchJsonFormatter.WriteLevel(Serilog.Events.LogEventLevel,System.String@,System.IO.TextWriter)">
+            <summary>
+            Writes out the log level
+            </summary>
+        </member>
+        <member name="M:Serilog.Sinks.ElasticSearch.ElasticsearchJsonFormatter.WriteTimestamp(System.DateTimeOffset,System.String@,System.IO.TextWriter)">
+            <summary>
+            Writes out the log timestamp
+            </summary>
+        </member>
+        <member name="M:Serilog.Sinks.ElasticSearch.ElasticsearchJsonFormatter.WriteLiteralValue(System.Object,System.IO.TextWriter)">
+            <summary>
+            Allows a subclass to write out objects that have no configured literal writer.
+            </summary>
+            <param name="value">The value to be written as a json construct</param>
+            <param name="output">The writer to write on</param>
+        </member>
+        <member name="T:Serilog.Sinks.ElasticSearch.ElasticsearchSink">
+            <summary>
+            Writes log events as documents to ElasticSearch.
+            </summary>
+        </member>
+        <member name="F:Serilog.Sinks.ElasticSearch.ElasticsearchSink.DefaultBatchPostingLimit">
+            <summary>
+            A reasonable default for the number of events posted in each batch.
+            </summary>
+        </member>
+        <member name="F:Serilog.Sinks.ElasticSearch.ElasticsearchSink.DefaultIndexFormat">
+            <summary>
+            Default to the Logstash index name format
+            </summary>
+        </member>
+        <member name="F:Serilog.Sinks.ElasticSearch.ElasticsearchSink.DefaultTypeName">
+            <summary>
+            Defaults to the type of logevent
+            </summary>
+        </member>
+        <member name="F:Serilog.Sinks.ElasticSearch.ElasticsearchSink.DefaultConnectionTimeout">
+            <summary>
+            Default connection timeout in milliseconds
+            </summary>
+        </member>
+        <member name="F:Serilog.Sinks.ElasticSearch.ElasticsearchSink.DefaultPeriod">
+            <summary>
+            A reasonable default time to wait between checking for event batches.
+            </summary>
+        </member>
+        <member name="M:Serilog.Sinks.ElasticSearch.ElasticsearchSink.#ctor(Serilog.Sinks.ElasticSearch.ElasticsearchSinkOptions)">
+            <summary>
+            Creates a new ElasticsearchSink instance with the provided options
+            </summary>
+            <param name="options">Options configuring how the sink behaves</param>
+        </member>
+        <member name="M:Serilog.Sinks.ElasticSearch.ElasticsearchSink.EmitBatch(System.Collections.Generic.IEnumerable{Serilog.Events.LogEvent})">
+            <summary>
+            Emit a batch of log events, running to completion synchronously.
+            </summary>
+            <param name="events">The events to emit.</param>
+            <remarks>
+            Override either <see cref="M:Serilog.Sinks.PeriodicBatching.PeriodicBatchingSink.EmitBatch(System.Collections.Generic.IEnumerable{Serilog.Events.LogEvent})" />
+             or <see cref="M:Serilog.Sinks.PeriodicBatching.PeriodicBatchingSink.EmitBatchAsync(System.Collections.Generic.IEnumerable{Serilog.Events.LogEvent})" />,
+            not both.
+            </remarks>
+        </member>
+        <member name="T:Serilog.Sinks.ElasticSearch.ElasticsearchSinkOptions">
+            <summary>
+            Provides ElasticsearchSink with configurable options
+            </summary>
+        </member>
+        <member name="M:Serilog.Sinks.ElasticSearch.ElasticsearchSinkOptions.#ctor(Elasticsearch.Net.ConnectionPool.IConnectionPool)">
+            <summary>
+            Configures the elasticsearch sink
+            </summary>
+            <param name="connectionPool">The connectionpool to use to write events to</param>
+        </member>
+        <member name="M:Serilog.Sinks.ElasticSearch.ElasticsearchSinkOptions.#ctor(System.Collections.Generic.IEnumerable{System.Uri})">
+            <summary>
+            Configures the elasticsearch sink
+            </summary>
+            <param name="nodes">The nodes to write to</param>
+        </member>
+        <member name="M:Serilog.Sinks.ElasticSearch.ElasticsearchSinkOptions.#ctor(System.Uri)">
+            <summary>
+            Configures the elasticsearch sink
+            </summary>
+            <param name="node">The node to write to</param>
+        </member>
+        <member name="P:Serilog.Sinks.ElasticSearch.ElasticsearchSinkOptions.ModifyConnectionSetttings">
+            <summary>
+             Connection configuration to use for connecting to the cluster.
+             </summary>
+        </member>
+        <member name="P:Serilog.Sinks.ElasticSearch.ElasticsearchSinkOptions.IndexFormat">
+            <summary>
+             The index name formatter. A string.Format using the DateTimeOffset of the event is run over this string.
+             defaults to "logstash-{0:yyyy.MM.dd}"
+             </summary>
+        </member>
+        <member name="P:Serilog.Sinks.ElasticSearch.ElasticsearchSinkOptions.TypeName">
+            <summary>
+             The default elasticsearch type name to use for the log events defaults to: logevent
+             </summary>
+        </member>
+        <member name="P:Serilog.Sinks.ElasticSearch.ElasticsearchSinkOptions.BatchPostingLimit">
+            <summary>
+             The maximum number of events to post in a single batch.
+             </summary>
+        </member>
+        <member name="P:Serilog.Sinks.ElasticSearch.ElasticsearchSinkOptions.Period">
+            <summary>
+             The time to wait between checking for event batches.
+             </summary>
+        </member>
+        <member name="P:Serilog.Sinks.ElasticSearch.ElasticsearchSinkOptions.FormatProvider">
+            <summary>
+             Supplies culture-specific formatting information, or null.
+             </summary>
+        </member>
+        <member name="P:Serilog.Sinks.ElasticSearch.ElasticsearchSinkOptions.Connection">
+            <summary>
+             Allows you to override the connection used to communicate with elasticsearch
+             </summary>
+        </member>
+        <member name="P:Serilog.Sinks.ElasticSearch.ElasticsearchSinkOptions.InlineFields">
+            <summary>
+            When true fields will be written at the root of the json document
+            </summary>
+        </member>
+        <member name="P:Serilog.Sinks.ElasticSearch.ElasticsearchSinkOptions.MinimumLogEventLevel">
+            <summary>
+            The minimum log event level required in order to write an event to the sink.
+            </summary>
+        </member>
+        <member name="P:Serilog.Sinks.ElasticSearch.ElasticsearchSinkOptions.Serializer">
+            <summary>
+             When passing a serializer unknown object will be serialized to object instead of relying on their ToString representation
+             </summary>
+        </member>
+        <member name="P:Serilog.Sinks.ElasticSearch.ElasticsearchSinkOptions.ConnectionPool">
+            <summary>
+            The connectionpool describing the cluster to write event to
+            </summary>
+        </member>
+        <member name="P:Serilog.Sinks.ElasticSearch.ElasticsearchSinkOptions.IndexDecider">
+            <summary>
+            Function to decide which index to write the LogEvent to
+            </summary>
+        </member>
+    </members>
+</doc>

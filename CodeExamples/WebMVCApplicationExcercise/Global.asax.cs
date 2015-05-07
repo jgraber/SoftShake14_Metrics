@@ -15,7 +15,7 @@ namespace WebMVCApplicationExcercise
         {
             // Create Logger
             Log.Logger = new LoggerConfiguration()
-                    .ReadAppSettings()
+                    .ReadFrom.AppSettings()
                     //.WriteTo.Seq("http://localhost:5341")
                     .CreateLogger();
 

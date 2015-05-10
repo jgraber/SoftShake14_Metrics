@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Serilog.Sinks.Elasticsearch;
 
 namespace ElasticsearchConfiguration
 {
@@ -17,7 +18,7 @@ namespace ElasticsearchConfiguration
 
             // Create Logger
             Log.Logger = new LoggerConfiguration()
-                    .WriteTo.ElasticSearch(server: elasticServer)
+                    .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(elasticServer))
                     .CreateLogger();
             LogExamples.WriteLogMessages();
         }
